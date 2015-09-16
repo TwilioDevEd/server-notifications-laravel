@@ -10,6 +10,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Services_Twilio;
+use Services_Twilio_RestException;
 
 class Handler extends ExceptionHandler
 {
@@ -90,12 +91,21 @@ class Handler extends ExceptionHandler
         $twilioNumber = env('TWILIO_NUMBER');
 
         $twilioService = new Services_Twilio($accountSid, $authToken);
-        $twilioService->account->messages->create(
-            [
-                'From' => $twilioNumber,
-                'To' => $to,
-                'Body' => $message
-            ]
-        );
+
+        try {
+            $twilioService->account->messages->create(
+                [
+                    'From' => $twilioNumber,
+                    'To' => $to,
+                    'Body' => $message
+                ]
+            );
+        }
+        catch(Services_Twilio_RestException $e) {
+            Log::error(
+                'Could not send SMS notification' .
+                ' Twilio replied with: ' . $e
+            );
+        }
     }
 }
