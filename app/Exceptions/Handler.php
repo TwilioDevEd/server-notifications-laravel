@@ -106,6 +106,10 @@ class Handler extends ExceptionHandler
                 'Could not send SMS notification' .
                 ' Twilio replied with: ' . $e
             );
+
+            // Log to stdout as well
+            $logger = new \Monolog\Logger("log");
+            $logger->addInfo("Could not send SMS notification. Exception was: $e");
         }
     }
 }
