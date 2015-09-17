@@ -34,7 +34,7 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $e)
     {
-        $this->_notifyThroughSms();
+        $this->_notifyThroughSms($e);
         return parent::report($e);
     }
 
@@ -54,7 +54,7 @@ class Handler extends ExceptionHandler
         return parent::render($request, $e);
     }
 
-    private function _notifyThroughSms()
+    private function _notifyThroughSms($e)
     {
         foreach ($this->_notificationRecipients() as $recipient) {
             $this->_sendSms(
