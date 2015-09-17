@@ -1,5 +1,6 @@
 # Server Notifications & Alerts with Twilio and Laravel
 
+[![Build Status](https://travis-ci.org/TwilioDevEd/server-notifications-laravel.svg?branch=master)](https://travis-ci.org/TwilioDevEd/server-notifications-laravel)
 ![server status](http://howtodocs.s3.amazonaws.com/new-relic-monitor.png "Server notifications")
 
 Use Twilio to create sms server alerts so that you never miss a critical server issue.
