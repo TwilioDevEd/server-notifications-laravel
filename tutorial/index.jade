@@ -1,0 +1,131 @@
+.chapter(data-title='Server Notifications and Alerts')
+  .step(data-file='config/administrators.json')
+    :markdown
+      ## What does this thing do?
+
+      This [Laravel](http://laravel.com/) sample application
+      demonstrates how to send SMS alerts to a list of system
+      administrators if something goes wrong on your server. In this
+      tutorial, we'll show you the key bits of code to make this work.
+
+      Let's get started!
+
+      ---
+
+      **See Also:**
+      * [Laravel documentation](http://laravel.com/docs/5.1)
+      * [Getting started with the Twilio-PHP library](https://twilio-php.readthedocs.org/en/latest/)
+
+  .step(data-file='config/administrators.json')
+    :markdown
+      ## List server admins
+
+      Create a list of administrators who should be notified if a
+      server error occurs.  The only requirement we have is a
+      `phone_number`.
+
+      ---
+
+      **See Also:**
+      * [PHP function reference: json_decode](http://php.net/manual/en/function.json-decode.php)
+
+  .step(data-file='app/exceptions/Handler.php', data-highlight='93-98')
+    :markdown
+      ## Configure Twilio client
+
+      In order to send a message we'll need to create a [Twilio REST
+      client](https://twilio-php.readthedocs.org/en/latest/usage/rest.html#creating-a-rest-client),
+      which requires reading our `TWILIO_ACCOUNT_SID` and
+      `TWILIO_AUTH_TOKEN` with the `env` [helper
+      function](http://laravel.com/docs/5.0/helpers#miscellaneous).
+
+      ---
+
+      **See Also:**
+      * [Twilio PHP Quickstart](https://twilio-php.readthedocs.org/en/latest/#quickstart)
+      * [The `Services_Twilio` class](https://twilio-php.readthedocs.org/en/latest/api/services.html#Services_Twilio)
+
+  .step(data-file='app/exceptions/Handler.php', data-highlight='35-39')
+    :markdown
+      ## Handle all the exceptions in the application
+
+      Each time an exception is raised anywhere in a Laravel
+      application an
+      [`ExceptionHandler`](http://laravel.com/api/5.0/Illuminate/Contracts/Debug/ExceptionHandler.html)
+      will be used to handle the exception. This is where we will hook
+      our SMS sending code. It's important to call `parent` so the
+      framework can do its regular error handling as well.
+
+      ---
+
+      **See Also:**
+      * [Errors in Laravel](http://laravel.com/docs/5.1/errors#the-exception-handler)
+
+  .step(data-file='app/exceptions/Handler.php', data-highlight='57-67')
+    :markdown
+      ## Create a custom alert message
+
+      Here we create an alert message to send out via text message. You might also
+      decide to include a picture with your alert message, maybe a screenshot of the
+      application when the crash happened?
+
+  .step(data-file='app/exceptions/Handler.php', data-highlight='69-89')
+    :markdown
+      ## Read the admins from the JSON file
+
+      Next we read the admins [from our JSON
+      file](http://laravel.com/api/5.0/Illuminate/Support/Facades/File.html)
+      and send alert messages to each of them with the private
+      `send_message` method.
+
+      ---
+
+      **See Also:**
+      * [Laravel's File Facade](http://laravel.com/api/5.0/Illuminate/Support/Facades/File.html)
+      * [Laravel Facades](http://laravel.com/docs/5.1/facades)
+
+  .step(data-file='app/exceptions/Handler.php', data-highlight='91-114')
+    :markdown
+      ## Send a text message
+
+      There are the three parameters needed to [send an
+      SMS](https://twilio-php.readthedocs.org/en/latest/#send-an-sms)
+      using the [Twilio REST
+      API](https://www.twilio.com/docs/api/rest): `From`, `To`, and
+      `Body`. After the message is sent, we print out the phone
+      number we're texting. [US phone
+      numbers](https://www.twilio.com/help/faq/sms/is-mms-supported-for-all-carriers-in-us-and-canada)
+      can also send an image with the message.
+
+      ---
+
+      **See Also:**
+      * [REST API Docs for Message resource](https://www.twilio.com/docs/api/rest/message)
+      * [Your message logs in the account portal](https://www.twilio.com/user/account/log/messages)
+      * [Logging with Laravel](http://laravel.com/docs/5.1/errors#logging)
+
+  .step
+    :markdown
+      ## Where to next?
+
+      That's it! We've just implemented an automated server notification system 
+      that can send you server alerts if anything goes wrong. If you're a PHP
+      developer working with Twilio, you might want to check out these other
+      tutorials.
+
+      [**Two-Factor Authentication**](https://www.twilio.com/docs/howto/walkthrough/two-factor-authentication/php/laravel)
+
+      Increase the security of your login system by verifying a user's mobile
+      phone in addition to their password.
+
+      [**Appointment Reminders**](https://www.twilio.com/docs/howto/walkthrough/appointment-reminders/php/laravel)
+
+      Send your customers a text message when they have an upcoming appointment - 
+      this tutorial shows you how to do it from a background job.
+
+      ### Did this help?
+
+      Thanks for checking out this tutorial! If you have any feedback to share 
+      with us, we'd love to hear it. Tweet [@twilio](http://twitter.com/twilio) 
+      to let us know what you think.
+

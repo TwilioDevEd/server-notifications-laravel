@@ -104,6 +104,7 @@ class Handler extends ExceptionHandler
                     'Body' => $message
                 ]
             );
+            Log::info('Message sent to' . $twilioNumber);
         }
         catch(Services_Twilio_RestException $e) {
             Log::error(
