@@ -34,15 +34,7 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $e)
     {
-
-        foreach ($this->_notificationRecipients() as $recipient) {
-            $this->_sendSms(
-                $recipient->phone_number,
-                '[This is a test] It appears the server' .
-                ' is having issues. Exception: ' . $e->getMessage() .
-                ' Go to http://newrelic.com for more details.'
-            );
-        }
+        $this->_notifyThroughSms();
         return parent::report($e);
     }
 
@@ -60,6 +52,18 @@ class Handler extends ExceptionHandler
         }
 
         return parent::render($request, $e);
+    }
+
+    private function _notifyThroughSms()
+    {
+        foreach ($this->_notificationRecipients() as $recipient) {
+            $this->_sendSms(
+                $recipient->phone_number,
+                '[This is a test] It appears the server' .
+                ' is having issues. Exception: ' . $e->getMessage() .
+                ' Go to http://newrelic.com for more details.'
+            );
+        }
     }
 
     private function _notificationRecipients()
@@ -106,10 +110,6 @@ class Handler extends ExceptionHandler
                 'Could not send SMS notification' .
                 ' Twilio replied with: ' . $e
             );
-
-            // Log to stdout as well
-            $logger = new \Monolog\Logger("log");
-            $logger->addInfo("Could not send SMS notification. Exception was: $e");
         }
     }
 }

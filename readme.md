@@ -19,9 +19,13 @@ $ php artisans serve
 Then visit the application at http://localhost:8000/
 
 This route will trigger an error and send a message to the numbers
-configured under `config/administrators.json`
+configured under `config/administrators.json`.
 
 ## Dependencies
 
 This application uses this Twilio helper library:
 * [twilio-php](https://github.com/twilio/twilio-php)
+
+### Run the tests
+
+Running `phpunit` should be enough.

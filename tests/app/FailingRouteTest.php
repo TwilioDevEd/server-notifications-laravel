@@ -4,7 +4,13 @@ class FailingRouteTest extends TestCase
 {
     public function testSendNotificationMessage()
     {
+        $response = $this->call('GET', '/error');
+        $this->assertEquals(500, $response->getStatusCode());
+    }
+
+    public function testCorrectRoute()
+    {
         $response = $this->call('GET', '/');
-        error_log(var_dump($response->getContent()));
+        $this->assertEquals(200, $response->getStatusCode());
     }
 }

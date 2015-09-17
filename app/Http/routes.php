@@ -11,7 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    throw new Exception('Paul please help!');
-    return view('welcome');
-});
+Route::get(
+    '/', function () {
+        return view('welcome');
+    }
+);
+
+Route::get(
+    '/error', function () {
+        throw new Exception('Uh oh server error');
+    }
+);
