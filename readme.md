@@ -29,4 +29,4 @@ This application uses this Twilio helper library:
 
 ### Run the tests
 
-Running `phpunit` should be enough.
+Run `phpunit` at the top level directory.
