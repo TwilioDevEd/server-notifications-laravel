@@ -102,6 +102,7 @@ class Handler extends ExceptionHandler
                     'From' => $twilioNumber,
                     'To' => $to,
                     'Body' => $message
+                //  'MediaUrl' => $imageUrl
                 ]
             );
             Log::info('Message sent to' . $twilioNumber);
