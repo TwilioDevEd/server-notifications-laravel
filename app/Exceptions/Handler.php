@@ -102,6 +102,7 @@ class Handler extends ExceptionHandler
                     'From' => $twilioNumber,
                     'To' => $to,
                     'Body' => $message
+                //   On US phone numbers, you could send an image as well!
                 //  'MediaUrl' => $imageUrl
                 ]
             );
