@@ -1,59 +1,64 @@
+<a href="https://www.twilio.com">
+  <img src="https://static0.twilio.com/marketing/bundles/marketing/img/logos/wordmark-red.svg" alt="Twilio" width="250" />
+</a>
+
 # Server Notifications & Alerts with Twilio and Laravel
 
 [![Build Status](https://travis-ci.org/TwilioDevEd/server-notifications-laravel.svg?branch=master)](https://travis-ci.org/TwilioDevEd/server-notifications-laravel)
-![server status](http://howtodocs.s3.amazonaws.com/new-relic-monitor.png "Server notifications")
 
-Use Twilio to create sms server alerts so that you never miss a critical server issue.
+Use Twilio to create SMS alerts so that you never miss a critical issue.
 
-## Running the application
+[Read the full tutorial here](https://www.twilio.com/docs/tutorials/walkthrough/server-notifications/php/laravel)!
 
-Clone this repository and cd into the directory.
+## Local Development
 
-1. Install the application's dependencies with [Composer](https://getcomposer.org/)
-   ```
-   $ composer update
-   ```
+1. Grab latest source
 
-1. Set the application's configuration variables. You can find your
-account's SID and authentication token in your
-[Twilio account](https://www.twilio.com/user/account/voice-messaging)
-You'll need to set the `TWILIO_AUTH_TOKEN`, `TWILIO_ACCOUNT_SID`, and
-`TWILIO_NUMBER` environment variables. The easiest way to accomplish
-this is using the `export` command.
+    ```bash
+     $ git clone git@github.com:TwilioDevEd/server-notifications-laravel.git
+    ```
 
-   ```bash
-   $ export TWILIO_ACCOUNT_SID=your account sid
-   ```
-   ```bash
-   $ export TWILIO_AUTH_TOKEN=your auth token
-   ```
-   ```bash
-   $ export TWILIO_NUMBER=+16515559999
-   ```
+1. Copy the sample configuration file and edit it to match your configuration.
 
-   For the `TWILIO_NUMBER` variable you'll need to provision a new number
-   in the
-   [Manage Numbers page](https://www.twilio.com/user/account/phone-numbers/incoming)
-   under your Twilio account. The phone number should be in
-   [E.164 format](https://www.twilio.com/help/faq/phone-numbers/how-do-i-format-phone-numbers-to-work-internationally)
+    ```bash
+     $ cp .env.example .env
+    ```
 
-1. Run the application using Artisan.
-
-   ```bash
-   $ php artisan serve
-   ```
+  You can find your `TWILIO_ACCOUNT_SID` and `TWILIO_AUTH_TOKEN` under
+  your [Twilio Account Settings](https://www.twilio.com/user/account/settings).
+  You can buy Twilio phone numbers at 
+  [Twilio numbers](https://www.twilio.com/user/account/phone-numbers/search)
+  `TWILIO_NUMBER` should be set to the phone number you purchased above.
+  `TWILIO_RR_NUMBER` should be set to a Twilio number too.
 
 1. Customize `config/administrators.json` with your name and phone number.
 
-1. Finally visit the application's error route at
+1. Install the dependencies with [Composer](https://getcomposer.org/).
+
+   ```bash
+    $ composer install
+   ```
+
+1. Generate an `APP_KEY`.
+
+   ```bash
+    $ php artisan key:generate
+   ```
+   
+1. Start the server.
+
+   ```bash
+    $ php artisan serve
+   ```
+
+### How To Demo?
+
+   Visit the application's error route at
    [http://localhost:8000/error](http://localhost:8000/error). You'll
    soon get a message informing you of an error.
 
-## Dependencies
+## Meta
 
-This application uses this Twilio helper library:
-* [twilio-php](https://github.com/twilio/twilio-php)
-
-### Run the tests
-
-Run `phpunit` at the top level directory.
+ * No warranty expressed or implied. Software is as is. Diggity.
+ * [MIT License](http://www.opensource.org/licenses/mit-license.html)
+ * Lovingly crafted by Twilio Developer Education.
