@@ -7,11 +7,10 @@ use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Log;
-use Services_Twilio;
-use Services_Twilio_RestException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Twilio\Rest\Client;
+use Twilio\Exceptions\TwilioException;
 
 class Handler extends ExceptionHandler
 {
@@ -74,7 +73,6 @@ class Handler extends ExceptionHandler
             'config' . DIRECTORY_SEPARATOR .
             'administrators.json';
         try {
-
             $adminsFileContents = \File::get($adminsFile);
 
             return json_decode($adminsFileContents);
@@ -99,15 +97,15 @@ class Handler extends ExceptionHandler
         try {
             $client->messages->create(
                 $to,
-                $twilioNumber,
                 [
-                    "body" => $message
+                    "body" => $message,
+                    "from" => $twilioNumber
                     //   On US phone numbers, you could send an image as well!
                     //  'mediaUrl' => $imageUrl
                 ]
             );
             Log::info('Message sent to ' . $twilioNumber);
-        } catch (Services_Twilio_RestException $e) {
+        } catch (TwilioException $e) {
             Log::error(
                 'Could not send SMS notification.' .
                 ' Twilio replied with: ' . $e
