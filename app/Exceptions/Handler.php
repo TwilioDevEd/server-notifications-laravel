@@ -2,15 +2,15 @@
 
 namespace App\Exceptions;
 
-use Log;
 use Exception;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Log;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Contracts\Filesystem\FileNotFoundException;
-use Services_Twilio;
-use Services_Twilio_RestException;
+use Twilio\Rest\Client;
+use Twilio\Exceptions\TwilioException;
 
 class Handler extends ExceptionHandler
 {
@@ -29,7 +29,7 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception  $e
+     * @param  \Exception $e
      * @return void
      */
     public function report(Exception $e)
@@ -41,8 +41,8 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $e
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Exception $e
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $e)
@@ -69,16 +69,14 @@ class Handler extends ExceptionHandler
     private function _notificationRecipients()
     {
         $adminsFile = base_path() .
-                    DIRECTORY_SEPARATOR .
-                    'config' . DIRECTORY_SEPARATOR .
-                    'administrators.json';
+            DIRECTORY_SEPARATOR .
+            'config' . DIRECTORY_SEPARATOR .
+            'administrators.json';
         try {
-
             $adminsFileContents = \File::get($adminsFile);
 
             return json_decode($adminsFileContents);
-        }
-        catch(FileNotFoundException $e) {
+        } catch (FileNotFoundException $e) {
             Log::error(
                 'Could not find ' .
                 $adminsFile .
@@ -94,22 +92,22 @@ class Handler extends ExceptionHandler
         $authToken = env('TWILIO_AUTH_TOKEN');
         $twilioNumber = env('TWILIO_NUMBER');
 
-        $twilioService = new Services_Twilio($accountSid, $authToken);
+        $client = new Client($accountSid, $authToken);
 
         try {
-            $twilioService->account->messages->create(
+            $client->messages->create(
+                $to,
                 [
-                    'From' => $twilioNumber,
-                    'To' => $to,
-                    'Body' => $message
-                //  'MediaUrl' => $imageUrl
+                    "body" => $message,
+                    "from" => $twilioNumber
+                    //   On US phone numbers, you could send an image as well!
+                    //  'mediaUrl' => $imageUrl
                 ]
             );
-            Log::info('Message sent to' . $twilioNumber);
-        }
-        catch(Services_Twilio_RestException $e) {
+            Log::info('Message sent to ' . $twilioNumber);
+        } catch (TwilioException $e) {
             Log::error(
-                'Could not send SMS notification' .
+                'Could not send SMS notification.' .
                 ' Twilio replied with: ' . $e
             );
         }
