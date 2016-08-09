@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "54792ce204e9d95ebb3a35bc3dd74c66",
-    "content-hash": "e8ff3130b5e63cabb0d4c65613c477c6",
+    "hash": "88b50e44803cf8bf39fb454a5da34713",
+    "content-hash": "657b92300aa16c131a90dd72e805873c",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -1890,16 +1890,16 @@
         },
         {
             "name": "twilio/sdk",
-            "version": "5.0.0-RC12",
+            "version": "5.0.0-RC19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twilio/twilio-php.git",
-                "reference": "222d3e586f99eb64d72b8f6c7515bd39fa8cc852"
+                "reference": "43226dde30e04fde18550d9ba3bfcbbd54ee9609"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/222d3e586f99eb64d72b8f6c7515bd39fa8cc852",
-                "reference": "222d3e586f99eb64d72b8f6c7515bd39fa8cc852",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/43226dde30e04fde18550d9ba3bfcbbd54ee9609",
+                "reference": "43226dde30e04fde18550d9ba3bfcbbd54ee9609",
                 "shasum": ""
             },
             "require": {
@@ -1931,7 +1931,7 @@
                 "sms",
                 "twilio"
             ],
-            "time": "2016-08-02 22:34:22"
+            "time": "2016-08-08 22:34:24"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -3037,28 +3037,29 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozart/assert.git",
-                "reference": "30eed06dd6bc88410a4ff7f77b6d22f3ce13dbde"
+                "reference": "bb2d123231c095735130cc8f6d31385a44c7b308"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/30eed06dd6bc88410a4ff7f77b6d22f3ce13dbde",
-                "reference": "30eed06dd6bc88410a4ff7f77b6d22f3ce13dbde",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/bb2d123231c095735130cc8f6d31385a44c7b308",
+                "reference": "bb2d123231c095735130cc8f6d31385a44c7b308",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3"
+                "php": "^5.3.3|^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.6"
+                "phpunit/phpunit": "^4.6",
+                "sebastian/version": "^1.0.1"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "1.2-dev"
                 }
             },
             "autoload": {
@@ -3082,7 +3083,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2015-08-24 13:29:44"
+            "time": "2016-08-09 15:02:57"
         }
     ],
     "aliases": [],
