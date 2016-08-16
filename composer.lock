@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "88b50e44803cf8bf39fb454a5da34713",
-    "content-hash": "657b92300aa16c131a90dd72e805873c",
+    "hash": "07190151d08b0dff508499d77a020bdc",
+    "content-hash": "7825369dbbd0080120051bed6c0be693",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -364,16 +364,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.1.40",
+            "version": "v5.1.41",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "555269ee07cfe4e966ad16b394c89fa0b586d8b0"
+                "reference": "4f338f494ee2fffe6605f70a7cb8a36c93da95b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/555269ee07cfe4e966ad16b394c89fa0b586d8b0",
-                "reference": "555269ee07cfe4e966ad16b394c89fa0b586d8b0",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/4f338f494ee2fffe6605f70a7cb8a36c93da95b6",
+                "reference": "4f338f494ee2fffe6605f70a7cb8a36c93da95b6",
                 "shasum": ""
             },
             "require": {
@@ -489,20 +489,20 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-06-17 19:23:17"
+            "time": "2016-08-10 12:23:27"
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.26",
+            "version": "1.0.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "fb3b30dca320b36931ea878fea17ebe136fba1b0"
+                "reference": "50e2045ed70a7e75a5e30bc3662904f3b67af8a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/fb3b30dca320b36931ea878fea17ebe136fba1b0",
-                "reference": "fb3b30dca320b36931ea878fea17ebe136fba1b0",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/50e2045ed70a7e75a5e30bc3662904f3b67af8a9",
+                "reference": "50e2045ed70a7e75a5e30bc3662904f3b67af8a9",
                 "shasum": ""
             },
             "require": {
@@ -572,7 +572,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2016-08-03 09:49:11"
+            "time": "2016-08-10 08:55:11"
         },
         {
             "name": "monolog/monolog",
@@ -1890,22 +1890,23 @@
         },
         {
             "name": "twilio/sdk",
-            "version": "5.0.0-RC19",
+            "version": "5.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twilio/twilio-php.git",
-                "reference": "43226dde30e04fde18550d9ba3bfcbbd54ee9609"
+                "reference": "c735e12e3c82679b7864888c992ae9bfb1b8ae80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/43226dde30e04fde18550d9ba3bfcbbd54ee9609",
-                "reference": "43226dde30e04fde18550d9ba3bfcbbd54ee9609",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/c735e12e3c82679b7864888c992ae9bfb1b8ae80",
+                "reference": "c735e12e3c82679b7864888c992ae9bfb1b8ae80",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
             "require-dev": {
+                "apigen/apigen": "^4.1",
                 "phpunit/phpunit": "4.5.*"
             },
             "type": "library",
@@ -1931,7 +1932,7 @@
                 "sms",
                 "twilio"
             ],
-            "time": "2016-08-08 22:34:24"
+            "time": "2016-08-15 20:45:49"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -3088,9 +3089,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "twilio/sdk": 5
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
