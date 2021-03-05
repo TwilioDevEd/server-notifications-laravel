@@ -1,5 +1,5 @@
 {
-    "name": "TwilioDevEd/server-notifications-laravel",
+    "name": "twilio-deved/server-notifications-laravel",
     "description": "Send SMS notifications whenever a Laravel error happens",
     "keywords": ["twilio", "sms", "notfications", "laravel"],
     "license": "MIT",
