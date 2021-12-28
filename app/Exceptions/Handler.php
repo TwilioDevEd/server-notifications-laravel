@@ -104,7 +104,7 @@ class Handler extends ExceptionHandler
                     //  'mediaUrl' => $imageUrl
                 ]
             );
-            Log::info('Message sent to ' . $twilioNumber);
+            Log::info('Message sent to ' . $to);
         } catch (TwilioException $e) {
             Log::error(
                 'Could not send SMS notification.' .
