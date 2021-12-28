@@ -4,7 +4,7 @@
 
 # Server Notifications & Alerts with Twilio and Laravel
 
-[![Build Status](https://travis-ci.org/TwilioDevEd/server-notifications-laravel.svg?branch=master)](https://travis-ci.org/TwilioDevEd/server-notifications-laravel)
+[![Build Status](https://github.com/TwilioDevEd/server-notifications-laravel/actions/workflows/laravel.yml/badge.svg)](https://github.com/TwilioDevEd/server-notifications-node/actions/workflows/laravel.yml)
 
 Use Twilio to create SMS alerts so that you never miss a critical issue.
 
